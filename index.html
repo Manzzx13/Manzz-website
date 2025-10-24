@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Halaman pembayaran untuk bisnis Manzx Tampan. Pastikan semua transaksi dilakukan dengan aman dan sesuai hukum.">
-  <title>𝕸𝖆𝖓𝖟𝖃 𝕿𝖆𝖒𝖕𝖆𝖓 𝙥𝙖𝙮𝙢𝙚𝙣𝙩</title>
+  <title>𝕲𝖆𝖗𝖟 𝙥𝙖𝙮𝙢𝙚𝙣𝙩</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -156,7 +155,7 @@
     <button class="close-btn" onclick="closeOutput()">TUTUP</button>
   </div>  
 
-  <footer>© Copyright 𝕸𝖆𝖓𝖟𝖃 𝕿𝖆𝖒𝖕𝖆𝖓 - Untuk bisnis legit. Pastikan transaksi aman dan sesuai hukum.</footer>  
+  <footer>© Copyright 𝕸𝖆𝖓𝖟𝖃 𝕿𝖆𝖒𝖕𝖆𝖓</footer>  
 
   <script>
     const music = document.getElementById("bg-music");
@@ -187,12 +186,14 @@
       }
     }
 
-    // Musik dimainkan hanya setelah interaksi pengguna untuk menghindari blokir browser
-    document.body.addEventListener('click', () => {
+    // Auto-play musik saat load, fallback klik pertama
+    window.addEventListener("load", () => {
       music.play().catch(() => {
-        console.log("Musik tidak bisa dimainkan.");
+        document.body.addEventListener('click', () => {
+          music.play();
+        }, { once: true });
       });
-    }, { once: true });
+    });
   </script>
 </body>
   </html>
